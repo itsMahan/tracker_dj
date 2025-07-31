@@ -1,0 +1,75 @@
+<!-- counter_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All counters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .no-counters {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>My counters</h1>
+
+  {% if counters %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Started at</th>
+        <th>Status</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for counter in counters %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ counter.name }}</td>
+        <td>{{ counter.start_date}}</td>
+        <td>{{ counter.days_passed }} Days Passed</td>
+        <td>{{ counter.created_at|date:"Y-m-d H:i" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <hr>
+    <div class="container">
+      <a class="button" href='../../'>Go Home</a>
+    </div>
+  {% else %}
+    <div class="no-counters">No counters found.</div>
+  {% endif %}
+</body>
+</html>
