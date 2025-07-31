@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tracker_app',
     'home_app',
     'event_app',
+    'counter_app',
 ]
 
 MIDDLEWARE = [
