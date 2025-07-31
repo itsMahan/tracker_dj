@@ -5,7 +5,7 @@ from .models import Tracker
 def list_trackers(request):
     trackers = Tracker.objects.all()
 
-    return render(request, 'tracker_app/list_trackers.html', {'trackers': trackers})
+    return render(request, 'tracker_app/list_tracker.html', {'trackers': trackers})
 
 
 def add_tracker(request):

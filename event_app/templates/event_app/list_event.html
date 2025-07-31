@@ -1,0 +1,77 @@
+<!-- event_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .no-events {
+      text-align: center;
+      padding: 2rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Events</h1>
+
+  {% if events %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Used</th>
+        <th>Total</th>
+        <th>Remaining</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ event.name }}</td>
+        <td>{{ event.used_events}}</td>
+        <td>{{ event.total_events }}</td>
+        <td>{{ event.remaining_events }}</td>
+        <td>{{ event.created_at|date:"Y-m-d H:i" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <hr>
+    <div class="container">
+      <a class="button" href='../../'>Go Home</a>
+    </div>
+  {% else %}
+    <div class="no-events">No events found.</div>
+  {% endif %}
+</body>
+</html>
