@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body class=
+           "d-flex align-items-center justify-content-center
+            vh-100 bg-light">
+    <div class="mx-auto p-4 text-center bg-white shadow-sm">
+
+        <h1 class="text-success">Add Event</h1>
+        <hr>
+        <p class="text-muted">
+            Explore our vast collection of programming
+            courses and articles at GeeksforGeeks.
+        </p>
+        <form method="post">
+            {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" id="name">
+          </div>
+          <div class="mb-3">
+            <label for="total_events" class="form-label">total events</label>
+            <input type="number" class="form-control" name="total_events" id="total_events">
+          </div>
+          <div class="mb-3">
+            <label for="used_events" class="form-label">used events</label>
+            <input type="number" class="form-control" name="used_events" id="used_events">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+    <script src=
+"https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js">
+      </script>
+</body>
+</html>
