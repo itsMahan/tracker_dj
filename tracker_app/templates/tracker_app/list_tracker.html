@@ -63,7 +63,11 @@
         <td>{{ tracker.end_date|date:"Y-m-d H:i" }}</td>
         <td>
           {% if tracker.days_left is not None %}
-            {{ tracker.days_left }} days
+            {% if tracker.days_left > 0 %}
+              {{ tracker.days_left }} days
+            {% else %}
+              -
+          {% endif %}
           {% else %}
             -
           {% endif %}
