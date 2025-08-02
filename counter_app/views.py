@@ -21,3 +21,8 @@ def add_counter(request):
         return redirect('http://127.0.0.1:8000/counter/list')
 
     return render(request, 'counter_app/add_counter.html')
+
+
+def delete_counter(request, id):
+    Counter.objects.get(id=id).delete()
+    return redirect('home')
