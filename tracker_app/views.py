@@ -18,3 +18,8 @@ def add_tracker(request):
         return redirect('http://127.0.0.1:8000/tracker/list')
 
     return render(request, 'tracker_app/add_tracker.html')
+
+
+def delete_tracker(request, id):
+    Tracker.objects.get(id=id).delete()
+    return redirect('home')

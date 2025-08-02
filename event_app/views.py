@@ -17,3 +17,8 @@ def add_event(request):
         return redirect('http://127.0.0.1:8000/event/list')
 
     return render(request, 'event_app/add_event.html')
+
+
+def delete_event(request, id):
+    Event.objects.get(id=id).delete()
+    return redirect('home')

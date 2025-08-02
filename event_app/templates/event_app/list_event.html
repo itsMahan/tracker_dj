@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>All Events</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -51,6 +53,7 @@
         <th>Total</th>
         <th>Remaining</th>
         <th>Created At</th>
+        <th>Remove</th>
       </tr>
     </thead>
     <tbody>
@@ -62,6 +65,8 @@
         <td>{{ event.total_events }}</td>
         <td>{{ event.remaining_events }}</td>
         <td>{{ event.created_at|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'delete_event' event.id %}" class="btn btn-danger">Delete</a></td>
+
       </tr>
       {% endfor %}
     </tbody>
