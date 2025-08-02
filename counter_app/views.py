@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render, redirect
 
 from .models import Counter
@@ -25,4 +27,10 @@ def add_counter(request):
 
 def delete_counter(request, id):
     Counter.objects.get(id=id).delete()
+    return redirect('home')
+
+def reset_counter(request, id):
+    counter = Counter.objects.get(id=id)
+    counter.start_date = datetime.now()
+    counter.save()
     return redirect('home')
