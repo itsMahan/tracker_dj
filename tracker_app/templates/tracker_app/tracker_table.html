@@ -1,0 +1,51 @@
+  <h3>My Trackers</h3>
+
+  {% if trackers %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Days Left</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tracker in trackers %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ tracker.name }}</td>
+        <td>{{ tracker.start_date|date:"Y-m-d H:i" }}</td>
+        <td>{{ tracker.end_date|date:"Y-m-d H:i" }}</td>
+        <td>
+          {% if tracker.days_left is not None %}
+            {% if tracker.days_left > 0 %}
+              {{ tracker.days_left }} days
+            {% else %}
+              -
+          {% endif %}
+          {% else %}
+            -
+          {% endif %}
+        </td>
+        <td>
+          {% if tracker.days_left < 1 or tracker.days_left is None %}
+            Completed
+          {% else %}
+            Ongoing
+          {% endif %}
+        </td>
+        <td>{{ tracker.created_at|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'delete_tracker' tracker.id %}" class="btn btn-danger">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <hr>
+  {% else %}
+    <div class="no-trackers">No trackers found.</div>
+  {% endif %}

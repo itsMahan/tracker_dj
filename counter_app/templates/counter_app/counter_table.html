@@ -1,0 +1,33 @@
+  <h3>My counters</h3>
+
+  {% if counters %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Started at</th>
+        <th>Status</th>
+        <th>Created At</th>
+        <th>Remove</th>
+        <th>Reset</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for counter in counters %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ counter.name }}</td>
+        <td>{{ counter.start_date}}</td>
+        <td>{{ counter.days_passed }} Days Passed</td>
+        <td>{{ counter.created_at|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'delete_counter' counter.id %}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{% url 'reset_counter' counter.id %}" class="btn btn-warning">Reset</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <hr>
+  {% else %}
+    <div class="no-counters">No counters found.</div>
+  {% endif %}
