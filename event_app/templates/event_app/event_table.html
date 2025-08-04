@@ -20,7 +20,13 @@
         <td>{{ event.name }}</td>
         <td>{{ event.used_events}}</td>
         <td>{{ event.total_events }}</td>
-        <td>{{ event.remaining_events }}</td>
+        <td>
+          {% if event.remaining_events is not None %}
+            {{ event.remaining_events }}
+          {% else %}
+            -
+          {% endif %}
+        </td>
         <td>{{ event.created_at|date:"Y-m-d H:i" }}</td>
         <td><a href="{% url 'delete_event' event.id %}" class="btn btn-danger">Delete</a></td>
 
