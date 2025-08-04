@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Tracker
 
 
@@ -22,4 +23,5 @@ def add_tracker(request):
 
 def delete_tracker(request, id):
     Tracker.objects.get(id=id).delete()
+    messages.success(request, 'Tracker deleted successfully')
     return redirect('home')

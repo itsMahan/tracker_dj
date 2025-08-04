@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import Event
 
 
@@ -21,4 +22,5 @@ def add_event(request):
 
 def delete_event(request, id):
     Event.objects.get(id=id).delete()
+    messages.success(request, 'Event deleted successfully')
     return redirect('home')
