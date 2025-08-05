@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+
+from .forms import TrackerUpdateForm
 from .models import Tracker
 
 
@@ -24,4 +26,16 @@ def add_tracker(request):
 def delete_tracker(request, id):
     Tracker.objects.get(id=id).delete()
     messages.success(request, 'Tracker deleted successfully')
-    return redirect('home')
+    return redirect('list_trackers')
+
+def update_tracker(request, id):
+    tracker = Tracker.objects.get(id=id)
+    if request.method == 'POST':
+        form = TrackerUpdateForm(request.POST, instance=tracker)
+        if form.is_valid():
+            messages.success(request, 'Tracker updated successfully')
+            form.save()
+            return redirect('list_trackers')
+    else:
+        form = TrackerUpdateForm(instance=tracker)
+    return render(request, 'tracker_app/tracker_update_form.html', {'form': form})

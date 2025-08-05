@@ -10,7 +10,10 @@
         <th>Total</th>
         <th>Remaining</th>
         <th>Created At</th>
+        <th>Update</th>
         <th>Remove</th>
+        <th>Increament</th>
+        <th>Decreament</th>
       </tr>
     </thead>
     <tbody>
@@ -28,7 +31,10 @@
           {% endif %}
         </td>
         <td>{{ event.created_at|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'update_event' event.id %}" class="btn btn-info">Update</a></td>
         <td><a href="{% url 'delete_event' event.id %}" class="btn btn-danger">Delete</a></td>
+        <td><a href="{% url 'increase_event' event.id %}" class="btn btn-secondary">+</a></td>
+        <td><a href="{% url 'decrease_event' event.id %}" class="btn btn-secondary">-</a></td>
 
       </tr>
       {% endfor %}

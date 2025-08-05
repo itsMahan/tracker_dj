@@ -3,6 +3,8 @@ from datetime import datetime
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
+from tracker_app.forms import TrackerUpdateForm
+from .forms import CounterUpdateForm
 from .models import Counter
 
 
@@ -21,7 +23,7 @@ def add_counter(request):
         start_date = request.POST['start_date']
         counter_obj = Counter(name=name, start_date=start_date)
         counter_obj.save()
-        return redirect('http://127.0.0.1:8000/counter/list')
+        return redirect('list_counters')
 
     return render(request, 'counter_app/add_counter.html')
 
@@ -37,3 +39,14 @@ def reset_counter(request, id):
     counter.save()
     messages.success(request, 'Counter reset from Today')
     return redirect('home')
+
+def update_counter(request, id):
+    if request.method == 'POST':
+        form = CounterUpdateForm(request.POST, instance=Counter.objects.get(id=id))
+        if form.is_valid():
+            messages.success(request, 'Counter updated successfully')
+            form.save()
+            return redirect('list_counters')
+    else:
+        form = CounterUpdateForm(instance=Counter.objects.get(id=id))
+    return render(request, 'counter_app/counter_update_form.html', {'form': form})

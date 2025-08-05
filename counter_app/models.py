@@ -7,7 +7,7 @@ from django.db import models
 
 class Counter(models.Model):
     name = models.CharField(max_length=100)
-    start_date = models.DateTimeField()
+    start_date = models.DateTimeField(default=datetime.now())
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
