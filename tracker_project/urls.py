@@ -23,4 +23,5 @@ urlpatterns = [
     path('tracker/', include('tracker_app.urls')),
     path('event/', include('event_app.urls')),
     path('counter/', include('counter_app.urls')),
-]
+    path('accounts/', include('accounts.urls')),
+    ]
