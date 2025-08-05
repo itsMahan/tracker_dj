@@ -9,8 +9,9 @@
         <th>Started at</th>
         <th>Status</th>
         <th>Created At</th>
-        <th>Remove</th>
         <th>Reset</th>
+        <th>Update</th>
+        <th>Remove</th>
       </tr>
     </thead>
     <tbody>
@@ -21,8 +22,9 @@
         <td>{{ counter.start_date}}</td>
         <td>{{ counter.days_passed }} Days Passed</td>
         <td>{{ counter.created_at|date:"Y-m-d H:i" }}</td>
-        <td><a href="{% url 'delete_counter' counter.id %}" class="btn btn-danger">Delete</a></td>
         <td><a href="{% url 'reset_counter' counter.id %}" class="btn btn-warning">Reset</a></td>
+        <td><a href="{% url 'update_counter' counter.id %}" class="btn btn-info">Update</a></td>
+        <td><a href="{% url 'delete_counter' counter.id %}" class="btn btn-danger">Delete</a></td>
       </tr>
       {% endfor %}
     </tbody>

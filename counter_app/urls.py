@@ -7,4 +7,5 @@ urlpatterns = [
     path('add', views.add_counter, name='add_counter'),
     path('delete/<int:id>', views.delete_counter, name='delete_counter'),
     path('reset/<int:id>', views.reset_counter, name='reset_counter'),
+    path('update/<int:id>', views.update_counter, name='update_counter'),
 ]

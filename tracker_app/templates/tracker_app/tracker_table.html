@@ -11,6 +11,7 @@
         <th>Days Left</th>
         <th>Status</th>
         <th>Created At</th>
+        <th>Update</th>
         <th>Remove</th>
       </tr>
     </thead>
@@ -40,6 +41,7 @@
           {% endif %}
         </td>
         <td>{{ tracker.created_at|date:"Y-m-d H:i" }}</td>
+        <td><a href="{% url 'update_tracker' tracker.id %}" class="btn btn-info">Update</a></td>
         <td><a href="{% url 'delete_tracker' tracker.id %}" class="btn btn-danger">Delete</a></td>
       </tr>
       {% endfor %}

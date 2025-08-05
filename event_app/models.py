@@ -13,13 +13,22 @@ class Event(models.Model):
 
     @property
     def remaining_events(self):
-        return self.total_events - self.used_events
+        if self.total_events:
+            return self.total_events - self.used_events
+        else:
+            return None
 
     def increament_event(self):
-        if self.used_events < self.total_events:
+        if not self.total_events:
+            self.used_events += 1
+            self.save()
+        elif self.used_events < self.total_events:
             self.used_events += 1
             self.save()
 
-    def decrement_event(self):
-        self.used_events -= 1
-        self.save()
+
+    def decreament_event(self):
+        if self.used_events > 0:
+            self.used_events -= 1
+            self.save()
+
