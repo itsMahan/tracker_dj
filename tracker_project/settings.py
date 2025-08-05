@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home_app',
     'event_app',
     'counter_app',
+    'accounts',
 ]
 
 MIDDLEWARE = [
